@@ -1,0 +1,195 @@
+<html lang = "en">
+<head>
+	<meta charset="utf-8"/>
+	<title>EDT_WoW_Test</title>
+	<script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+	<link href="css/main.css" rel="stylesheet">
+	
+	<!--Get those fonts -->	
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,700" rel="stylesheet">
+
+	<!--jquery popup-->
+	<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+</head>	
+
+<body>
+	<div id="content">
+		<div id="logoHead">
+			<a href="http://eagledream.com/"><img src="img/logo.png" alt="EagleDreamLogo"></a>
+			
+			<form>
+				<input class ="headElement" id = "characterName" type="text" data-placeholder="Character Name">
+			</form>
+			<form>
+				<select class ="headElement" id = "realmName" value="Realm Name">
+
+				</select>
+			</form>
+			<div id="searchButton">
+				<button class = "headElement" onclick='getUser();'>Search</button>
+			</div>
+		</div>
+	
+		
+		<div id='infoBoxHolder'>
+			
+			<div id="charStats" class="infoBox">
+				
+				<div class="column">
+					
+					<div class="statblock">						
+						<div class="heading">
+							Attributes
+						</div>
+						<ul class="double">
+							<li>Strength</li>
+							<li class= "rightStat" id="strength">--</li>
+
+							<li>Agility</li>
+							<li class= "rightStat" id="agility">--</li>
+
+							<li>Intellect</li>
+							<li class= "rightStat" id="intellect">--</li>
+
+
+							<li>Stamina</li>							
+							<li class= "rightStat" id="stamina">--</li>
+						
+						</ul>
+					</div>
+					
+					
+					<div class="statblock">
+						<div class="heading">
+							Attack
+						</div>
+						<ul class="double">
+							<li>Damage</li>
+							<li class= "rightStat" id="damage">--</li>
+							<li>Speed</li>
+							<li class= "rightStat" id="speed">--</li>
+						</ul>
+					</div>
+					
+					<div class="statblock">
+						<div class="heading">
+							Spell
+						</div>
+						<ul class="double">
+							<li>Mana Regen</li>
+							<li class= "rightStat" id="manaRegen">--</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="statblock">
+						<div class="heading">
+							Defense
+						</div>
+						<ul class="double">
+							<li>Armor</li>
+							<li class= "rightStat" id="armor">--</li>
+							<li>Dodge</li>
+							<li class= "rightStat" id="dodge">--</li>
+							<li>Parry</li>
+							<li class= "rightStat" id="parry">--</li>
+							<li>Block</li>
+							<li class= "rightStat" id="block">--</li>
+						</ul>
+					</div>
+					
+					<div class="statblock">
+						<div class="heading">
+							Enhancements
+						</div>
+							<ul class="double">
+								<li>Crit</li>
+								<li class= "rightStat"id="crit">--</li>
+								<li>Haste</li>
+								<li class= "rightStat" id="haste">--</li>
+								<li>Mastery</li>
+								<li class= "rightStat" id="mastery">--</li>							
+								<li>Leech</li>
+								<li class= "rightStat" id="leech">--</li>
+								<li>Versatility</li>
+								<li class= "rightStat" id="versatility">--</li>
+							</ul>
+					</div>
+				</div>
+				
+				<div class="column" id="compareStats">
+					<div class="heading yelHeading">Compare Stats</div>
+					
+					<a class="woops_open"><img class="comparePic" title="Elf Avatar" alt="Elf Avatar" src="img/ElfAvatar.png" ></a>
+					<a class="woops_open"><img class="comparePic" title="Devil Avatar" alt="Devil Avatar" src="img/DevilAvatar.png"></a>
+					<a class="woops_open"><img class="comparePic" title="Orc Avatar" alt="Orc Avatar" src="img/OrcAvatar.png"></a>
+					<a class="woops_open"><img class="comparePic" title="Shaman Avatar" alt="Shaman Avatar" src="img/ShamanAvatar.png"></a>
+					<a class="woops_open"><img class="comparePic" title="Minotaur Avatar" alt="Minotaur Avatar" src="img/MinotaurAvatar.png"></a>
+					<a class="woops_open"><img class="comparePic" title="Goblin Avatar" alt="Goblin Avatar" src="img/GoboAvatar.png"></a>
+				</div>
+			</div>		
+		
+		<div id="itemStats" class="infoBox">
+			<div id="itemColumn">						
+					<div class="heading yelHeading">
+						My Item Sets
+					</div>
+					
+					<div id="PVP">
+						<a class="woops_open"><img title="PVP Coming Soon" src="img/PVP.png" alt="PVP"></a>
+						<a class="woops_open"><img title="PVE Coming Soon" src="img/PVE.png" alt="PVP"></a>
+					</div>
+					
+					
+					<ul class="triple" id="itemList">
+						<!--<li>Helm</li>
+						<li class= "midStat" id="helm">--</li>
+						<li class= "rightStat" id="helmCost">--</li>
+						
+						<li>Chest</li>
+						<li class= "midStat" id ="chest">--</li>
+						<li class= "rightStat" id="chestCost">--</li>
+						
+						<li>Shoulders</li>
+						<li class= "midStat" id ="shoulders">--</li>
+						<li class= "rightStat" id="shouldersCost">--</li>
+					
+						<li>Legs</li>
+						<li class= "midStat" id ="legs">--</li>
+						<li class= "rightStat" id="legsCost">--</li>
+					
+						<li>Feet</li>
+						<li class= "midStat" id ="feet">--</li>
+						<li class= "rightStat" id="feetCost">--</li>
+						
+						<li>Trinket</li>
+						<li class= "midStat" id ="trinket">--</li>
+						<li class= "rightStat" id="trinketCost">--</li>
+					
+						<li>Back</li>
+						<li class= "midStat" id ="back">--</li>
+						<li class= "rightStat" id="backCost">--</li>-->
+					</ul>
+				</div>
+		</div>
+		
+		<a id="reset"><img src="img/clear.png" title="Reset data" onclick="resetAll();"></a>
+			
+	</div>
+
+	<div id="woops">
+		<h1>Woops!</h1>
+		<img id="popupPic" title="This feature is under construction" style="text-align: center" src="img/underConstruction.png" alt="Construction Post Image">
+		<p>
+			This feature is under construction. Come back later to check it out!
+		</p>
+	</div>
+
+	<div id="bg">
+		<img src="img/bg.jpg" alt="Background Image">
+	</div>
+</body>
+	
+</html>
